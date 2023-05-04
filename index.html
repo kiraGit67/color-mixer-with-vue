@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Mixer API with Vue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div :style="{ backgroundColor: `rgb(${red}, ${green}, ${blue})` }">
+            <header>
+                <div>
+                    <label for="red">r</label>
+                    <input type="range" id="red" name="red" step="1" min="0" max="255" v-model="red">
+                </div>
+                <div>
+                    <label for="green">g</label>
+                    <input type="range" id="green" name="green" step="1" min="0" max="255" v-model="green">
+                </div>
+                <div>
+                    <label for="blue">b</label>
+                    <input type="range" id="blue" name="blue" step="1" min="0" max="255" v-model="blue">
+                </div>
+                <p id="color-value" :style="{ color: `rgb(${red}, ${green}, ${blue})` }">rgb({{red}}, {{green}},
+                    {{blue}})</p>
+                <button :style="{ backgroundColor: `rgb(${red}, ${green}, ${blue})` }">Random Color</button>
+            </header>
+        </div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
