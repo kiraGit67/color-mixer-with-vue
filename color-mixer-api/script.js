@@ -3,31 +3,46 @@
 Vue.createApp({
   data() {
     return {
-      red: 255,
-      green: 105,
-      blue: 180,
+      red: undefined,
+      green: undefined,
+      blue: undefined,
+      hex: "",
     };
   },
   computed: {
-    rgb2hex() {
-      let hexValue = "#";
-
-      const hexRed = parseInt(this.red).toString(16);
-      const hexGreen = parseInt(this.green).toString(16);
-      const hexBlue = parseInt(this.blue).toString(16);
-
-      hexValue += hexRed.length === 1 ? "0" + hexRed : hexRed;
-      hexValue += hexGreen.length === 1 ? "0" + hexGreen : hexGreen;
-      hexValue += hexBlue.length === 1 ? "0" + hexBlue : hexBlue;
-
-      return hexValue;
+    handleBackgroundColorChangeOutput() {
+      return { backgroundColor: this.hex };
+    },
+    handleColorChangeOutput() {
+      return { color: this.hex };
     },
   },
+  created() {
+    console.log("Ich kann etwas zu Anfang ausführen");
+    this.getApiData();
+  },
   methods: {
-    setBackgroundColor(event) {
-      console.log(event.target.id);
-      const colorName = event.target.id;
-      this[colorName] = event.target.value;
+    async getApiData() {
+      const response = await fetch("https://dummy-apis.netlify.app/api/color");
+      const jsonData = await response.json();
+      this.red = jsonData.rgb.r;
+      this.green = jsonData.rgb.g;
+      this.blue = jsonData.rgb.b;
+      this.hex = jsonData.color;
+      console.log(jsonData);
     },
+    /*
+    getApiData() {
+      fetch("https://dummy-apis.netlify.app/api/color")
+        .then((response) => response.json())
+        .then((jsonData) => {
+          this.red = jsonData.rgb.r;
+          this.green = jsonData.rgb.g;
+          this.blue = jsonData.rgb.b;
+          this.hex = jsonData.color;
+          console.log(jsonData);
+        });
+    },
+    */
   },
 }).mount("#app");
