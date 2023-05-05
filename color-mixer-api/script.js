@@ -59,6 +59,7 @@ Vue.createApp({
     #B20953
     #E5337A
     #DD306A
+    #ff127d
     #87C835
     #0A15F2
     #109D1D
