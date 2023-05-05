@@ -11,6 +11,7 @@
 
 <body>
     <div id="app">
+        <p v-if="errorMessage">{{ errorMessage }}</p>
         <div v-if="red && green && blue" :style="handleBackgroundColorChangeOutput">
             <header>
                 <div>
