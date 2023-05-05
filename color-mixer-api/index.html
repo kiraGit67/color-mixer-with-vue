@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Mixer API with Vue</title>
+    <title>Color Mixer API with Vue Created Hooks</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id="app">
-        <div :style="{ backgroundColor: `rgb(${red}, ${green}, ${blue})` }">
+        <div v-if="red && green && blue" :style="handleBackgroundColorChangeOutput">
             <header>
                 <div>
                     <label for="red">r</label>
@@ -29,8 +29,8 @@
                 <p id="color-value" :style="{ color: `rgb(${red}, ${green}, ${blue})` }">rgb({{red}}, {{green}},
                     {{blue}})</p>
                 -->
-                <p id="color-value" :style="{ color: rgb2hex }">{{ rgb2hex }}</p>
-                <button :style="{ backgroundColor: rgb2hex }">Random Color</button>
+                <p id="color-value" :style="handleColorChangeOutput">{{ hex }}</p>
+                <button @click="getApiData" :style="handleBackgroundColorChangeOutput">Random Color</button>
             </header>
         </div>
     </div>
