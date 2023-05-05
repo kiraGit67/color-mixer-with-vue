@@ -25,9 +25,12 @@
                     <label for="blue">b</label>
                     <input type="range" id="blue" name="blue" step="1" min="0" max="255" v-model="blue">
                 </div>
+                <!--
                 <p id="color-value" :style="{ color: `rgb(${red}, ${green}, ${blue})` }">rgb({{red}}, {{green}},
                     {{blue}})</p>
-                <button :style="{ backgroundColor: `rgb(${red}, ${green}, ${blue})` }">Random Color</button>
+                -->
+                <p id="color-value" :style="{ color: rgb2hex }">{{ rgb2hex }}</p>
+                <button :style="{ backgroundColor: rgb2hex }">Random Color</button>
             </header>
         </div>
     </div>
